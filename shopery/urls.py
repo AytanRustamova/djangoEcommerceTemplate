@@ -29,4 +29,5 @@ urlpatterns = [
     path('contact/', include("contact.urls", namespace='contact')),
     path('product/', include("product.urls", namespace='product')),
     path('pages/', include("pages.urls", namespace='pages')),
+    path('account/', include("user.urls", namespace='user')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
