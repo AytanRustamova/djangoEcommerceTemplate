@@ -136,9 +136,9 @@
                                 </select>
                             </div>
                             <div class="header__in">
-                                <a href="sign-in.html">Sign in </a>
+                                <a href="{% url 'user:login' %}">Sign in </a>
                                 <span>/</span>
-                                <a href="create-account.html">Sign up</a>
+                                <a href="{% url 'user:register' %}">Sign up</a>
                             </div>
                         </div>
                     </div>
@@ -241,39 +241,33 @@
                                         </svg>
                                     </span>
                                 </a>
-                                <ul class="header__navigation-drop-menu">
-                                    <li class="header__navigation-drop-menu-link">
-                                        <a href="user-dashboard.html">User Dashboard </a>
+                                <ul class="header__mobile-dropdown-menu">
+                                    <li class="header__mobile-dropdown-menu-link">
+                                        <a href="{% url 'pages:wishlist'%}">Wishlist</a>
                                     </li>
-                                    <li class="header__navigation-drop-menu-link">
-                                        <a href="order-history.html">Order History </a>
+                                    <li class="header__mobile-dropdown-menu-link">
+                                        <a href="{% url 'pages:shopping_cart' %}">Shopping Cart</a>
                                     </li>
-                                    <li class="header__navigation-drop-menu-link">
-                                        <a href="order-details.html">Order Details </a>
+                                    <li class="header__mobile-dropdown-menu-link">
+                                        <a href="{% url 'pages:checkout' %}">Checkout</a>
                                     </li>
-                                    <li class="header__navigation-drop-menu-link">
-                                        <a href="account-setting.html">Account Settings </a>
+                                    <li class="header__mobile-dropdown-menu-link">
+                                        <a href="{% url 'user:login' %}">Sign in</a>
                                     </li>
-                                    <li class="header__navigation-drop-menu-link">
-                                        <a href="product-details.html">Product Details</a>
+                                    <li class="header__mobile-dropdown-menu-link">
+                                        <a href="{% url 'user:register' %}">Create Account</a>
                                     </li>
-                                    <li class="header__navigation-drop-menu-link">
-                                        <a href="wishlist.html"> Wishlist</a>
+                                    <li class="header__mobile-dropdown-menu-link">
+                                        <a href="{% url 'user:user_dashboard' %}">User Dashboard</a>
                                     </li>
-                                    <li class="header__navigation-drop-menu-link">
-                                        <a href="shopping-cart.html"> Shopping Cart</a>
+                                    <li class="header__mobile-dropdown-menu-link">
+                                        <a href="{% url 'pages:account_setting' %}">Account Settings</a>
                                     </li>
-                                    <li class="header__navigation-drop-menu-link">
-                                        <a href="sign-in.html"> Sign in</a>
+                                    <li class="header__mobile-dropdown-menu-link">
+                                        <a href="{% url 'pages:faq' %}">faq</a>
                                     </li>
-                                    <li class="header__navigation-drop-menu-link">
-                                        <a href="create-account.html"> Create Account</a>
-                                    </li>
-                                    <li class="header__navigation-drop-menu-link">
-                                        <a href="faq.html"> faq</a>
-                                    </li>
-                                    <li class="header__navigation-drop-menu-link">
-                                        <a href="404.html"> Error 404</a>
+                                    <li class="header__mobile-dropdown-menu-link">
+                                        <a href="{% url 'pages:error' %}">404</a>
                                     </li>
                                 </ul>
                             </li>
@@ -291,7 +285,7 @@
                                         <a href="{% url 'blog:blog' %}">Blog list</a>
                                     </li>
                                     <li class="header__navigation-drop-menu-link">
-                                        <a href="{% url 'blog_details:blog' %}">Single Blog</a>
+                                        <a href="{% url 'blog:blog_details' %}">Single Blog</a>
                                     </li>
                                 </ul>
                             </li>
@@ -357,7 +351,7 @@
                         </form>
                         <ul class="header__mobile-menu">
                             <li class="header__mobile-menu-item active">
-                                <a href="#" class="header__mobile-menu-item-link">
+                                <a href="{% url 'home:home' %}" class="header__mobile-menu-item-link">
                                     Home
                                     <span class="drop-icon">
                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -365,23 +359,6 @@
                                         </svg>
                                     </span>
                                 </a>
-                                <ul class="header__mobile-dropdown-menu">
-                                    <li class="header__mobile-dropdown-menu-link active">
-                                        <a href="index.html">Home 01</a>
-                                    </li>
-                                    <li class="header__mobile-dropdown-menu-link">
-                                        <a href="home-02.html">Home 02</a>
-                                    </li>
-                                    <li class="header__mobile-dropdown-menu-link">
-                                        <a href="home-03.html">Home 03</a>
-                                    </li>
-                                    <li class="header__mobile-dropdown-menu-link">
-                                        <a href="home-04.html">Home 04</a>
-                                    </li>
-                                    <li class="header__mobile-dropdown-menu-link">
-                                        <a href="home-05.html">Home 05</a>
-                                    </li>
-                                </ul>
                             </li>
                             <li class="header__mobile-menu-item">
                                 <a href="#" class="header__mobile-menu-item-link">
@@ -412,40 +389,31 @@
                                 </a>
                                 <ul class="header__mobile-dropdown-menu">
                                     <li class="header__mobile-dropdown-menu-link">
-                                        <a href="product-details.html">Product Details</a>
+                                        <a href="{% url 'pages:wishlist'%}">Wishlist</a>
                                     </li>
                                     <li class="header__mobile-dropdown-menu-link">
-                                        <a href="wishlist.html">Wishlist</a>
+                                        <a href="{% url 'pages:shopping_cart' %}">Shopping Cart</a>
                                     </li>
                                     <li class="header__mobile-dropdown-menu-link">
-                                        <a href="shopping-cart.html">Shopping Cart</a>
+                                        <a href="{% url 'pages:checkout' %}">Checkout</a>
                                     </li>
                                     <li class="header__mobile-dropdown-menu-link">
-                                        <a href="checkout.html">Checkout</a>
+                                        <a href="{% url 'user:login' %}">Sign in</a>
                                     </li>
                                     <li class="header__mobile-dropdown-menu-link">
-                                        <a href="sign-in.html">Sign in</a>
+                                        <a href="{% url 'user:register' %}">Create Account</a>
                                     </li>
                                     <li class="header__mobile-dropdown-menu-link">
-                                        <a href="create-account.html">Create Account</a>
+                                        <a href="{% url 'user:user_dashboard' %}">User Dashboard</a>
                                     </li>
                                     <li class="header__mobile-dropdown-menu-link">
-                                        <a href="user-dashboard.html">User Dashboard</a>
+                                        <a href="{% url 'pages:account_setting' %}">Account Settings</a>
                                     </li>
                                     <li class="header__mobile-dropdown-menu-link">
-                                        <a href="order-history.html">order history</a>
+                                        <a href="{% url 'pages:faq' %}">faq</a>
                                     </li>
                                     <li class="header__mobile-dropdown-menu-link">
-                                        <a href="order-details.html">Order Details</a>
-                                    </li>
-                                    <li class="header__mobile-dropdown-menu-link">
-                                        <a href="account-setting.html">Account Settings</a>
-                                    </li>
-                                    <li class="header__mobile-dropdown-menu-link">
-                                        <a href="faq.html">faq</a>
-                                    </li>
-                                    <li class="header__mobile-dropdown-menu-link">
-                                        <a href="404.html">404</a>
+                                        <a href="{% url 'pages:error' %}">404</a>
                                     </li>
                                 </ul>
                             </li>
