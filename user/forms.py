@@ -2,14 +2,15 @@ from django import forms
 # from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password #Djangonun validate_password funksiyasini oz formumuzda istifade edirik.
-
+from django.contrib.auth.forms import UserCreationForm
 User = get_user_model()
 
 class RegistrationForm(forms.ModelForm):
     password1 = forms.CharField(max_length=127, validators=(validate_password,))
     password2 = forms.CharField(max_length=127, validators=(validate_password,))
+    
     class Meta:
-        model = User,
+        model = User
         fields = [
             'first_name',
             'last_name',
