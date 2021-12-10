@@ -9,3 +9,9 @@ Register Form Plan.
 4. Fieldlerin errorlari ucun de errorfield yazmaliyiq.(register.htmlda)
 
 5. 
+
+
+
+
+
+Redirect ve reverse_lazynin ferqi: redirect / teleb edir. Name ve namespace istifade etmek olmur. Amma reverse_lazy funksiyasi bize uzun url yazmaqdan qacindirir. name ve namespaceden istifade ede bilirik.
