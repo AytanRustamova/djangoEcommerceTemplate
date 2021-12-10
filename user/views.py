@@ -13,13 +13,15 @@ User = get_user_model()
 def register(request):
     form = RegistrationForm()
     if request.method == "POST":
-        form = RegistrationForm(data=request.POST, files=request.Files)
+        form = RegistrationForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             user = form.save(commit=False)
             user.set_password = form.cleaned_data.get('password1')
             user.save()
             messages.success(request, 'You are successfully registered.')
             return redirect(reverse_lazy('home:home'))
+        else:
+            return redirect(reverse_lazy('user:login'))
     
     context = {
         'form' : form

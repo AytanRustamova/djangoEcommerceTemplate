@@ -41,18 +41,3 @@ class RegistrationForm(forms.ModelForm):
         }
         
         
-        
-    def clean(self): #Check password1 and password2 is same or not in HTML form without sending query.
-        password1 = self.cleaned_data.get('password1'),
-        password2 = self.cleaned_data.get('password2')
-        
-        if password1 != password2:
-            raise forms.ValidationError('Passwords are not same!')
-        return super().clean()
-    
-
-
-
-
-
-
