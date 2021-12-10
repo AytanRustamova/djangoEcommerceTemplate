@@ -20,8 +20,8 @@ def register(request):
             user.save()
             messages.success(request, 'You are successfully registered.')
             return redirect(reverse_lazy('home:home'))
-        else:
-            return redirect(reverse_lazy('user:login'))
+        # else:
+        #     return redirect(reverse_lazy('user:login'))
     
     context = {
         'form' : form
@@ -30,7 +30,6 @@ def register(request):
 
 def login(request):
     return render(request, 'login.html')
-
 
 def dashboard(request):
     return render(request, 'user-dashboard.html')
