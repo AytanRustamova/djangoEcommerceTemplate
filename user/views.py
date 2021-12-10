@@ -17,6 +17,7 @@ def register(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.set_password = form.cleaned_data.get('password1')
+            user.is_activ = False
             user.save()
             messages.success(request, 'You are successfully registered.')
             return redirect(reverse_lazy('home:home'))
