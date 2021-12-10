@@ -5,6 +5,10 @@ from . forms import RegistrationForm
 from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.urls import reverse_lazy
+from user.tasks import send_confirmation_mail
+from django.utils.encoding import force_text
+from django.utils.http import urlsafe_base64_decode
+from user.tools.token import account_activation_token
 
 User = get_user_model()
 
@@ -19,6 +23,7 @@ def register(request):
             user.set_password = form.cleaned_data.get('password1')
             user.is_activ = False
             user.save()
+            send_confirmation_mail()
             messages.success(request, 'You are successfully registered.')
             return redirect(reverse_lazy('home:home'))
         else:
@@ -34,3 +39,22 @@ def login(request):
 
 def dashboard(request):
     return render(request, 'user-dashboard.html')
+
+def activate(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+        
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        messages.success(request, 'Email is activated')
+        return redirect(reverse_lazy('home:home'))
+    elif user:
+        messages.error(request, 'Email is not activated.')
+        return redirect(reverse_lazy('user:register'))
+    else:
+        messages.error(request, 'Email is not activated')
+        return redirect(reverse_lazy('user:register'))
