@@ -20,8 +20,8 @@ def register(request):
             user.save()
             messages.success(request, 'You are successfully registered.')
             return redirect(reverse_lazy('home:home'))
-        # else:
-        #     return redirect(reverse_lazy('user:login'))
+        else:
+            messages.error(request, 'Invalid form submission.')
     
     context = {
         'form' : form

@@ -10,6 +10,7 @@
       <div class="container">
         <div class="form-wrapper">
           <h6 class="font-title--sm">create account</h6>
+          {% include 'messages.html' %}
           <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.non_field_errors }}
@@ -19,6 +20,7 @@
                 {% for error in field.errors %}
                   <li class="alert-danger alert">{{error}}</li>
                 {% endfor %}
+                
               <span class="icon icon-warning">
                 <svg
                   width="20"
@@ -113,10 +115,13 @@
                 </label>
               </div>
             </div>
-            
+
             <div class="form-button">
               <button type="submit" class="button button--md w-100">Create Account</button>
             </div>
+          
+
+
             <div class="form-register">
               Already have account ? <a href="{% url 'user:login' %}">Login</a>
             </div>

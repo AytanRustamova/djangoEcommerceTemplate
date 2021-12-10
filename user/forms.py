@@ -40,4 +40,11 @@ class RegistrationForm(forms.ModelForm):
             'bio': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Bio'}),
         }
         
+    # def clean(self):
+    #     password1 = self.cleaned_data.get('password1') 
+    #     password2 = self.cleaned_data.get('password2')
+
+    #     if password1 != password2:
+    #         raise forms.ValidationError('Paswwords are not same')
         
+    #     return super().clean()
