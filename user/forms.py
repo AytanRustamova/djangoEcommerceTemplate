@@ -23,16 +23,24 @@ class RegistrationForm(forms.ModelForm):
     
     class Meta:
         model = User
-        fields = [
+        fields = (
             'first_name',
             'last_name',
             'username',
             'email',
-            'password',
-            'gender', 
             'bio',
+            'gender', 
             'image'
-        ]
+        )
+        widgets= {
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}),
+            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'E-mail'}),
+            'bio': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Bio'}),
+        }
+        
+        
         
     def clean(self): #Check password1 and password2 is same or not in HTML form without sending query.
         password1 = self.cleaned_data.get('password1'),

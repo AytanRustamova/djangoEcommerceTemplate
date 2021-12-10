@@ -1,0 +1,11 @@
+Register Form Plan.
+
+1. evvelce forms.py fayli acilir burda htmlden yox formun oz widgetlerinden istifade edib form yaradilir. 
+
+2.Sonra models.py'de form ucun hansi charfieldler olacaqsa onlari yaradiriq
+
+3. sonra register.htmlde input tagleri silib for ile fieldl'rin gelmesini teskil edirik. 
+
+4. Fieldlerin errorlari ucun de errorfield yazmaliyiq.(register.htmlda)
+
+5. 
