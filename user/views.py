@@ -1,6 +1,6 @@
 # User app views
-
 from django.shortcuts import redirect, render
+from django.core.mail.message import sanitize_address
 from . forms import RegistrationForm
 from django.contrib.auth import get_user_model
 from django.contrib import messages
@@ -21,9 +21,10 @@ def register(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.set_password = form.cleaned_data.get('password1')
-            user.is_activ = False
+            user.is_active = False
             user.save()
-            send_confirmation_mail()
+            site_address = request.is_secure() and "https://" or "http://" + request.META['HTTP_HOST']  # https
+            send_confirmation_mail(user_id=user.id, site_address=site_address)
             messages.success(request, 'You are successfully registered.')
             return redirect(reverse_lazy('home:home'))
         else:
