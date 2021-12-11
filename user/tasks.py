@@ -11,7 +11,7 @@ User = get_user_model()
 def send_confirmation_mail(user_id, site_address):
     user = User.objects.filter(id=user_id).first()
     from_email = settings.EMAIL_HOST_USER
-    recipient = user.email 
+    recipient = user.email
     subject = 'Please confirm your account'
     context = {
         'user': user,
