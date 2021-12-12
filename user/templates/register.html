@@ -17,10 +17,11 @@
             {% for field in form %}
             <div class="form-input">
                 {{field}}
+              {% if form.errors %}
                 {% for error in field.errors %}
-                  <li class="alert-danger alert">{{error}}</li>
+                  <p>{{error}}</p>
                 {% endfor %}
-            
+              {% endif %}
             
                 <span class="icon icon-warning">
                   <svg
