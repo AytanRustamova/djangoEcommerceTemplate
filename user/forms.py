@@ -2,7 +2,7 @@ from django import forms
 # from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password #Djangonun validate_password funksiyasini oz formumuzda istifade edirik.
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils.translation import gettext, gettext_lazy as _
 from django.contrib.auth import password_validation
 User = get_user_model()
@@ -49,3 +49,11 @@ class RegistrationForm(UserCreationForm):
     #         raise forms.ValidationError('Paswwords are not same')
         
     #     return super().clean()
+    
+    
+class LoginForm(forms.Form):
+    email = forms.EmailField(max_length=50, widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'E-mail'}
+    ))
+    password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={
+        'class': 'form-control', 'placeholder': 'Password'
+    }))

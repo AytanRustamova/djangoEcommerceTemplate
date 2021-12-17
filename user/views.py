@@ -1,8 +1,8 @@
 # User app views
 from django.shortcuts import redirect, render
 from django.core.mail.message import sanitize_address
-from . forms import RegistrationForm
-from django.contrib.auth import get_user_model
+from . forms import RegistrationForm,LoginForm
+from django.contrib.auth import get_user_model, authenticate, login as django_login, logout as django_logout
 from django.contrib import messages
 from django.urls import reverse_lazy
 from user.tasks import send_confirmation_mail
@@ -11,9 +11,7 @@ from django.utils.http import urlsafe_base64_decode
 from user.tools.token import account_activation_token
 
 User = get_user_model()
-
 # Create your views here.
-
 def register(request):
     form = RegistrationForm()
     if request.method == "POST":
@@ -35,8 +33,7 @@ def register(request):
     }
     return render(request, 'register.html', context)
 
-def login(request):
-    return render(request, 'login.html')
+
 
 def dashboard(request):
     return render(request, 'user-dashboard.html')
@@ -59,3 +56,31 @@ def activate(request, uidb64, token):
     else:
         messages.error(request, 'Email is not activated')
         return redirect(reverse_lazy('user:register'))
+    
+    
+    
+def login(request):
+    form = LoginForm()
+    if request.method == 'POST':
+        form = LoginForm(data=request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get('email')
+            password = form.cleaned_data.get('password')
+            user= authenticate(username= email, password=password)
+            if user:
+                django_login(request, user)
+                messages.success(request, 'Siz ugurla login oldunuz.')
+                return redirect(reverse_lazy('home:home'))
+            else:
+                messages.success(request, 'Siz login ola bilmediniz.')
+    context = {
+        'form':form,
+    }
+    return render(request, 'login.html', context)
+
+
+
+def logout(request):
+    django_logout(request)
+    return redirect(reverse_lazy('user:login'))
+    
