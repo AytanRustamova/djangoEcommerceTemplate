@@ -9,6 +9,7 @@ from user.tasks import send_confirmation_mail
 from django.utils.encoding import force_text
 from django.utils.http import urlsafe_base64_decode
 from user.tools.token import account_activation_token
+from django.http import HttpResponseRedirect
 
 User = get_user_model()
 # Create your views here.
@@ -60,6 +61,7 @@ def activate(request, uidb64, token):
     
     
 def login(request):
+    redirect_to = request.GET.get('next', ' ')
     form = LoginForm()
     if request.method == 'POST':
         form = LoginForm(data=request.POST)
@@ -70,7 +72,7 @@ def login(request):
             if user:
                 django_login(request, user)
                 messages.success(request, 'Siz ugurla login oldunuz.')
-                return redirect(reverse_lazy('home:home'))
+                return HttpResponseRedirect(redirect_to) 
             else:
                 messages.success(request, 'Siz login ola bilmediniz.')
     context = {
