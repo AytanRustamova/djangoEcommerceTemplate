@@ -109,9 +109,9 @@
                                         />
                                         <path
                                             d="M8.5 10.8182C9.88071 10.8182 11 9.71925 11 8.36364C11 7.00803 9.88071 5.90909 8.5 5.90909C7.11929 5.90909 6 7.00803 6 8.36364C6 9.71925 7.11929 10.8182 8.5 10.8182Z"
+                                            stroke-linejoin="round"
                                             stroke="currentColor"
                                             stroke-linecap="round"
-                                            stroke-linejoin="round"
                                         />
                                     </svg>
                                 </span>
@@ -135,11 +135,16 @@
                                     <option value="5">rup</option>
                                 </select>
                             </div>
-                            <div class="header__in">
-                                <a href="{% url 'user:login' %}">Sign in </a>
-                                <span>/</span>
-                                <a href="{% url 'user:register' %}">Sign up</a>
-                            </div>
+                            {% if user.is_authenticated %}
+                                <span><a href="{% url 'user:logout' %}"> Logout</a></span>
+                            {% else %}
+                                <div class="header__in">
+                                    <a href="{% url 'user:login' %}">Sign in </a>
+                                    <span>/</span>
+                                    <a href="{% url 'user:register' %}">Sign up</a>
+                                </div>
+                            {% endif %}
+                          
                         </div>
                     </div>
                 </div>

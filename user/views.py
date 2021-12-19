@@ -81,7 +81,6 @@ def login(request):
     return render(request, 'login.html', context)
 
 
-
 def logout(request):
     django_logout(request)
     return redirect(reverse_lazy('user:login'))
