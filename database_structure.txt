@@ -1,0 +1,19 @@
+1.About
+    Team Section
+        img
+        name 
+        proficiency
+        facebook
+        twitter
+        pinterest
+        instagram
+
+    Client Testimonials
+        content
+        img
+        name
+        star
+        status -customer
+    
+    Partners
+        img
