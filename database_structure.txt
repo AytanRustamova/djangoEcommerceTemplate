@@ -1,4 +1,4 @@
-1.About
+1.About: 3 models
     Team Section
         img
         name 
@@ -7,13 +7,11 @@
         twitter
         pinterest
         instagram
-
     Client Testimonials
         content
         img
         name
         star
         status -customer
-    
     Partners
         img
