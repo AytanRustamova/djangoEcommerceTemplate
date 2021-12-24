@@ -1,4 +1,5 @@
 from django.contrib import admin
+from blog.models import Blog
 from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
