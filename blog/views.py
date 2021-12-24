@@ -16,3 +16,7 @@ from .models import Blog
 class BlogListView(ListView):
     model = Blog
     template_name = 'blog-list.html'
+    context_object_name = 'blogs'
+    queryset = Blog.objects.filter(is_active = True)
+    paginate_by = 1
+    
