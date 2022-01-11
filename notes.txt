@@ -15,3 +15,4 @@ Register Form Plan.
 
 
 Redirect ve reverse_lazynin ferqi: redirect / teleb edir. Name ve namespace istifade etmek olmur. Amma reverse_lazy funksiyasi bize uzun url yazmaqdan qacindirir. name ve namespaceden istifade ede bilirik.
+ salam 
