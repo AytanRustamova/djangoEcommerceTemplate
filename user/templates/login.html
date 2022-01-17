@@ -2,6 +2,9 @@
 
 {%load static%}
 
+{% block link %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+{% endblock %}
 {% block content %}
     <!-- Sign-in Section Start  -->
     <section class="sign-in section section--xl">
@@ -40,6 +43,9 @@
             <div class="form-register">
               Don't have account ?<a href="{% url 'user:register' %}">Register</a>
             </div>
+            <a href="#"><i class="bi bi-facebook"></i>/a>
+            <a href="#"><i class="bi bi-google"></i></a>
+            
           </form>
         </div>
       </div>

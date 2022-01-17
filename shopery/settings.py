@@ -78,7 +78,7 @@ TEMPLATES = [
             ],
         },
     },
-]
+] 
 
 WSGI_APPLICATION = 'shopery.wsgi.application'
 
@@ -91,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'ayten12345',
+        'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',
         'PORT': 5432,
     }

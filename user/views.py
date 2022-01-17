@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model, authenticate, login as django_lo
 from django.contrib import messages
 from django.urls import reverse_lazy
 from user.tasks import send_confirmation_mail
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
 from user.tools.token import account_activation_token
 from django.http import HttpResponseRedirect
