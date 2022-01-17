@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'order',
     'pages',
     'product',
-    'user'
+    'user',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -117,7 +118,36 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
+# add this
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+# [...]
+
+LOGIN_URL = reverse_lazy('user:login')
+LOGIN_REDIRECT_URL = reverse_lazy('home:home')
+LOGOUT_URL = reverse_lazy('user:logout')
+LOGOUT_REDIRECT_URL = reverse_lazy('user:login')
+
+# [...]
+
+#[...]
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '534532517565138'       # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '39ef0a07f4b79b5c97823c3d515a36d1'  # App Secret
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_friends']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id,name,email,picture',
+}
+
+#[...]
+
+
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
